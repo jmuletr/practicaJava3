@@ -8,7 +8,7 @@ public class Printer {
 // Hi haurà 27 lletres en total, separades per un espai en blanc.
     public Printer(String alphabet) {
         this.alphabet = alphabet;
-        System.out.println(alphabet.length());
+
         for (int i = 0; i < alphabet.length(); i++) {
             if (alphabet.charAt(i) == '\n') counter++;
 
@@ -25,26 +25,25 @@ public class Printer {
         text = text.toUpperCase();
         String result = "";
         int newLine = alphabet.length()/ counter +1;
-        System.out.println(newLine);
         int valChar;
         int widthChar = ((alphabet.length()/27)/ counter + 1);
         for (int i = 0, x = 0; i < counter; i++) {
             for (int j = 0; j < text.length(); j++) {
                 if (text.charAt(j) > 64 && text.charAt(j) < 91) {
                     valChar = (text.charAt(j) - 'A') * (widthChar);
-                    System.out.println(valChar);
                     result += alphabet.substring(valChar+x, (valChar + (widthChar - 1))+x);
-                    System.out.println(alphabet.substring(valChar+x, (valChar + widthChar)+x));
+                    if (j != text.length() - 1) result += " ";
                 }
                 else if(text.charAt(j) == 32 && counter == 5){
-                    result+= " ";
+                    result+= "    ";
 
                 }else if(text.charAt(j) == 32 && counter == 3){
-                    result+= "   ";
+                    result+= "      ";
 
                 }else{
                     valChar = ('Z' - 'A' + 1) * (widthChar);
                     result += alphabet.substring(valChar+x, (valChar +(widthChar-1))+x);
+                    if (j != text.length() - 1) result += " ";
                 }
             }
             x += newLine;
