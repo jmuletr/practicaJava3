@@ -34,12 +34,10 @@ public class Printer {
                     result += alphabet.substring(valChar+x, (valChar + (widthChar - 1))+x);
                     if (j != text.length() - 1) result += " ";
                 }
-                else if(text.charAt(j) == 32 && counter == 5){
-                    result+= "    ";
-
-                }else if(text.charAt(j) == 32 && counter == 3){
-                    result+= "      ";
-
+                else if(text.charAt(j) == 32){
+                    for (int k = 0; k < widthChar; k++) {
+                        result+= " ";
+                    }
                 }else{
                     valChar = ('Z' - 'A' + 1) * (widthChar);
                     result += alphabet.substring(valChar+x, (valChar +(widthChar-1))+x);
@@ -49,7 +47,6 @@ public class Printer {
             x += newLine;
             if (i < counter - 1) result += "\n";
         }
-        System.out.println(result);
         return result;
     }
 }
