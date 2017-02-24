@@ -27,26 +27,24 @@ public class Printer {
         int newLine = alphabet.length()/ counter +1;
         System.out.println(newLine);
         int valChar;
-        int widthChar = ((alphabet.length()/27)/ counter /*+ 1*/);
+        int widthChar = ((alphabet.length()/27)/ counter + 1);
         for (int i = 0, x = 0; i < counter; i++) {
             for (int j = 0; j < text.length(); j++) {
                 if (text.charAt(j) > 64 && text.charAt(j) < 91) {
-                    if (text.charAt(j) == 'A'){
-                        valChar = (text.charAt(j) - 'A') * (widthChar);
-                    }else valChar = (text.charAt(j) - 'A') * (widthChar) + 1;
+                    valChar = (text.charAt(j) - 'A') * (widthChar);
                     System.out.println(valChar);
-                    result += alphabet.substring(valChar+x, (valChar + widthChar)+x);
+                    result += alphabet.substring(valChar+x, (valChar + (widthChar - 1))+x);
                     System.out.println(alphabet.substring(valChar+x, (valChar + widthChar)+x));
                 }
                 else if(text.charAt(j) == 32 && counter == 5){
-                    result+= "   ";
+                    result+= " ";
 
                 }else if(text.charAt(j) == 32 && counter == 3){
                     result+= "   ";
 
                 }else{
-                    valChar = newLine - widthChar-1;
-                    result += alphabet.substring(valChar+x, (valChar +(widthChar-2))+x);
+                    valChar = ('Z' - 'A' + 1) * (widthChar);
+                    result += alphabet.substring(valChar+x, (valChar +(widthChar-1))+x);
                 }
             }
             x += newLine;
